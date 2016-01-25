@@ -1458,6 +1458,16 @@ public final class CMSettings {
         public static final Validator QS_SHOW_BRIGHTNESS_SLIDER_VALIDATOR =
                 sBooleanValidator;
 
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * 0 = Off, 1 = on
+	 */
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
+
+	/** @hide */
+	public static final Validator QS_FAST_DATA_ENABLE_VALIDATOR =
+		sBooleanValidator;
+
         /**
          * Whether to control brightness from status bar
          * 0 = 0ff, 1 = on
@@ -1784,6 +1794,7 @@ public final class CMSettings {
                 CMSettings.System.SHOW_ALARM_ICON,
                 CMSettings.System.STATUS_BAR_IME_SWITCHER,
                 CMSettings.System.QS_SHOW_BRIGHTNESS_SLIDER,
+		CMSettings.System.QS_FAST_DATA_ENABLE,
                 CMSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
                 CMSettings.System.VOLBTN_MUSIC_CONTROLS,
                 CMSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
@@ -1923,6 +1934,7 @@ public final class CMSettings {
             VALIDATORS.put(STATUS_BAR_QUICK_QS_PULLDOWN,
                     STATUS_BAR_QUICK_QS_PULLDOWN_VALIDATOR);
             VALIDATORS.put(QS_SHOW_BRIGHTNESS_SLIDER, QS_SHOW_BRIGHTNESS_SLIDER_VALIDATOR);
+	    VALIDATORS.put(QS_FAST_DATA_ENABLE, QS_FAST_DATA_ENABLE_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_BRIGHTNESS_CONTROL,
                     STATUS_BAR_BRIGHTNESS_CONTROL_VALIDATOR);
             VALIDATORS.put(VOLBTN_MUSIC_CONTROLS, VOLBTN_MUSIC_CONTROLS_VALIDATOR);
@@ -2403,6 +2415,12 @@ public final class CMSettings {
          */
         public static final String QS_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
 
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @hide
+	 */
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
+
         /**
          * List of QS tile names
          * @hide
@@ -2614,6 +2632,7 @@ public final class CMSettings {
                 CMSettings.Secure.POWER_MENU_ACTIONS,
                 CMSettings.Secure.STATS_COLLECTION,
                 CMSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
+		CMSettings.Secure.QS_FAST_DATA_ENABLE,
                 CMSettings.Secure.QS_TILES,
                 CMSettings.Secure.QS_USE_MAIN_TILES,
                 CMSettings.Secure.NAVIGATION_RING_TARGETS[0],
