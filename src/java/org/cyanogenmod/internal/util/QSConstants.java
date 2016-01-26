@@ -65,7 +65,8 @@ public class QSConstants {
     public static final String TILE_APPCIRCLEBAR = "appcirclebar";
     public static final String TILE_APPSIDEBAR = "appsidebar";
     public static final String TILE_RESTARTUI = "restartui";
-
+    public static final String TILE_POWER = "power_menu";
+					
     public static final String DYNAMIC_TILE_NEXT_ALARM = "next_alarm";
     public static final String DYNAMIC_TILE_IME_SELECTOR = "ime_selector";
     public static final String DYNAMIC_TILE_SU = "su";
@@ -108,7 +109,7 @@ public class QSConstants {
         STATIC_TILES_AVAILABLE.add(TILE_HEADS_UP);
         STATIC_TILES_AVAILABLE.add(TILE_AMBIENT_DISPLAY);
         STATIC_TILES_AVAILABLE.add(TILE_SYNC);
-//        STATIC_TILES_AVAILABLE.add(TILE_BATTERY_SAVER);
+        STATIC_TILES_AVAILABLE.add(TILE_BATTERY_SAVER);
         STATIC_TILES_AVAILABLE.add(TILE_BRIGHTNESS);
         STATIC_TILES_AVAILABLE.add(TILE_SCREEN_OFF);
         STATIC_TILES_AVAILABLE.add(TILE_SCREENSHOT);
@@ -120,7 +121,7 @@ public class QSConstants {
         STATIC_TILES_AVAILABLE.add(TILE_APPCIRCLEBAR);
         STATIC_TILES_AVAILABLE.add(TILE_APPSIDEBAR);
         STATIC_TILES_AVAILABLE.add(TILE_RESTARTUI);
-        STATIC_TILES_AVAILABLE.add(TILE_BATTERY_SAVER);
+        STATIC_TILES_AVAILABLE.add(TILE_POWER);
 
         TILES_AVAILABLE.addAll(STATIC_TILES_AVAILABLE);
 
