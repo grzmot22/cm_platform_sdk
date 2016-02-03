@@ -1659,6 +1659,36 @@ public final class CMSettings {
         public static final String NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES =
                 "notification_light_pulse_custom_values";
 
+        /**
+         * Which applications to disable heads up notifications in
+         *
+         * @hide
+         */
+        public static final String HEADS_UP_CUSTOM_VALUES = "heads_up_custom_values";
+
+        /** @hide */
+        public static final Validator HEADS_UP_CUSTOM_VALUES_VALIDATOR = sAlwaysTrueValidator;
+
+        /**
+         * Which applications to disable heads up notifications for
+         *
+         * @hide
+         */
+        public static final String HEADS_UP_BLACKLIST_VALUES = "heads_up_blacklist_values";
+
+        /** @hide */
+        public static final Validator HEADS_UP_BLACKLIST_VALUES_VALIDATOR = sAlwaysTrueValidator;
+
+        /**
+         * Which applications to post all notification to heads up
+         *
+         * @hide
+         */
+        public static final String HEADS_UP_WHITELIST_VALUES = "heads_up_whitelist_values";
+
+        /** @hide */
+        public static final Validator HEADS_UP_WHITELIST_VALUES_VALIDATOR = sAlwaysTrueValidator;
+
         /** @hide */
         public static final Validator NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES_VALIDATOR =
                 new Validator() {
@@ -1970,6 +2000,9 @@ public final class CMSettings {
                     NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES,
                     NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_CUSTOM_VALUES, HEADS_UP_CUSTOM_VALUES_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_BLACKLIST_VALUES, HEADS_UP_BLACKLIST_VALUES_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_WHITELIST_VALUES, HEADS_UP_WHITELIST_VALUES_VALIDATOR);
             VALIDATORS.put(__MAGICAL_TEST_PASSING_ENABLER,
                     __MAGICAL_TEST_PASSING_ENABLER_VALIDATOR);
         };
