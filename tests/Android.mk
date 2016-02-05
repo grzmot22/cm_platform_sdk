@@ -19,8 +19,13 @@ include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := tests
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
+<<<<<<< HEAD
     org.cyanogenmod.platform \
     org.cyanogenmod.platform.internal
+=======
+    org.cyanogenmod.platform.sdk \
+    android-support-test
+>>>>>>> eb17396... cmsdk: Add concept of parameterized BinderIdTransactionTest.
 
 LOCAL_SRC_FILES := $(call all-subdir-java-files, src/)
 
