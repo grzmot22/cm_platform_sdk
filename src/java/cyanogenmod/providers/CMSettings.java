@@ -1754,6 +1754,19 @@ public final class CMSettings {
                 };
 
         /**
+         * Whether we automatically generate notification LED colors or just
+         * use the boring default.
+         *
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_COLOR_AUTO =
+                "notification_light_color_auto";
+
+        /** @hide */
+        public static final Validator NOTIFICATION_LIGHT_COLOR_AUTO_VALIDATOR =
+                sBooleanValidator;
+
+        /**
          * I can haz more bukkits
          * @hide
          */
@@ -2003,6 +2016,8 @@ public final class CMSettings {
             VALIDATORS.put(HEADS_UP_CUSTOM_VALUES, HEADS_UP_CUSTOM_VALUES_VALIDATOR);
             VALIDATORS.put(HEADS_UP_BLACKLIST_VALUES, HEADS_UP_BLACKLIST_VALUES_VALIDATOR);
             VALIDATORS.put(HEADS_UP_WHITELIST_VALUES, HEADS_UP_WHITELIST_VALUES_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_LIGHT_COLOR_AUTO,
+                    NOTIFICATION_LIGHT_COLOR_AUTO_VALIDATOR);
             VALIDATORS.put(__MAGICAL_TEST_PASSING_ENABLER,
                     __MAGICAL_TEST_PASSING_ENABLER_VALIDATOR);
         };
@@ -2642,6 +2657,12 @@ public final class CMSettings {
          */
         public static final String LIVE_LOCK_SCREEN_ENABLED = "live_lock_screen_enabled";
 
+        /**
+         * Whether keyguard will direct show security view (0 = false, 1 = true)
+         * @hide
+         */
+        public static final String LOCK_PASS_TO_SECURITY_VIEW = "lock_screen_pass_to_security_view";
+
         // endregion
 
         /**
@@ -2689,6 +2710,7 @@ public final class CMSettings {
                 CMSettings.Secure.APP_PERFORMANCE_PROFILES_ENABLED,
                 CMSettings.Secure.QS_LOCATION_ADVANCED,
                 CMSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED,
+                CMSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW
         };
 
         /**
