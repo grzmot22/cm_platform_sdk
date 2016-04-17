@@ -1011,6 +1011,14 @@ public final class CMSettings {
          */
         public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
 
+
+	/**
+	 * Fastkly enable mobile data without showing data usage summary.
+	 * @hide
+	 */
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
+	
+	
         /** @hide */
         public static final Validator VOLUME_WAKE_SCREEN_VALIDATOR =
                 sBooleanValidator;
