@@ -1011,12 +1011,6 @@ public final class CMSettings {
          */
         public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
 
-
-	/**
-	 * Fastkly enable mobile data without showing data usage summary.
-	 * @hide
-	 */
-	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
 	
 	
         /** @hide */
@@ -2429,6 +2423,12 @@ public final class CMSettings {
 
         // region Secure Settings
 
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @hide
+	 */
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
+	
         /**
          * Whether to enable "advanced mode" for the current user.
          * Boolean setting. 0 = no, 1 = yes.
@@ -2750,6 +2750,7 @@ public final class CMSettings {
          * @hide
          */
         public static final String[] LEGACY_SECURE_SETTINGS = new String[]{
+		CMSettings.Secure.QS_FAST_DATA_ENABLE,
                 CMSettings.Secure.ADVANCED_MODE,
                 CMSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
                 CMSettings.Secure.BUTTON_BRIGHTNESS,
@@ -2783,7 +2784,7 @@ public final class CMSettings {
                 CMSettings.Secure.APP_PERFORMANCE_PROFILES_ENABLED,
                 CMSettings.Secure.QS_LOCATION_ADVANCED,
                 CMSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED,
-                CMSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW
+                CMSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW,
         };
 
         /**

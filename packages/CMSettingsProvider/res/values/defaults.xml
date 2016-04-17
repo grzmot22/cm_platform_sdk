@@ -21,13 +21,18 @@
          0. Off
          1. Right
          2. Left -->
+	 
     <integer name="def_qs_quick_pulldown">0</integer>
+
 
     <!-- Default for CMSettings.System.SYSTEM_PROFILES_ENABLED -->
     <bool name="def_profiles_enabled">true</bool>
 
     <!-- Defaults for Secure -->
 
+    <!--Default for CMSettings.System.QS_FAST_DATA_ENABLE-->
+   <bool name="def_qs_fast_data_enable">false</bool>
+    
     <!-- Default for CMSettings.Secure.ADVANCED_MODE -->
     <bool name="def_advanced_mode">true</bool>
 
