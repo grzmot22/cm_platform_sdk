@@ -236,6 +236,11 @@ public class CMDatabaseHelper extends SQLiteOpenHelper{
             stmt = db.compileStatement("INSERT OR IGNORE INTO secure(name,value)"
                     + " VALUES(?,?);");
             // Secure
+		
+	    //Read fast data state - CM13 way
+	    loadBooleanSetting(stmt,CMSettings.Secure.QS_FAST_DATA_ENABLE,
+		    R.bool.def_qs_fast_data_enable);
+		
             loadBooleanSetting(stmt, CMSettings.Secure.ADVANCED_MODE,
                     R.bool.def_advanced_mode);
 
@@ -264,6 +269,9 @@ public class CMDatabaseHelper extends SQLiteOpenHelper{
             loadStringSetting(stmt,
                     CMSettings.Secure.PROTECTED_COMPONENT_MANAGERS,
                     R.string.def_protected_component_managers);
+		    
+	  
+		    
         } finally {
             if (stmt != null) stmt.close();
         }

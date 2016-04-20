@@ -80,12 +80,15 @@ public class CMSettingsProviderDefaultsTest extends AndroidTestCase {
 
     //SECURE
     static {
-        SECURE_SETTINGS_DEFAULTS.add(new Setting(
-                CMSettings.Secure.DEV_FORCE_SHOW_NAVBAR,
-                "R.integer.def_force_show_navbar"));
+	SECURE_SETTINGS_DEFAULTS.add(new Setting(
+		CMSettings.Secure.QS_FAST_DATA_ENABLE,
+		"R.bool.def_qs_fast_data_enable"));
         SECURE_SETTINGS_DEFAULTS.add(new Setting(
                 CMSettings.Secure.ADVANCED_MODE,
                 "R.bool.def_advanced_mode"));
+	SECURE_SETTINGS_DEFAULTS.add(new Setting(
+                CMSettings.Secure.DEV_FORCE_SHOW_NAVBAR,
+                "R.integer.def_force_show_navbar"));
         SECURE_SETTINGS_DEFAULTS.add(new Setting(
                 CMSettings.Secure.QS_USE_MAIN_TILES,
                 "R.bool.def_sysui_qs_main_tiles"));

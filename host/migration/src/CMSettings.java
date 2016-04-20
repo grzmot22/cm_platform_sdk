@@ -739,6 +739,12 @@ public final class CMSettings {
 
         // region Secure Settings
 
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @hide
+	 */
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
+	
         /**
          * Whether to enable "advanced mode" for the current user.
          * Boolean setting. 0 = no, 1 = yes.
@@ -991,6 +997,13 @@ public final class CMSettings {
          */
         public static final String LIVE_DISPLAY_COLOR_MATRIX = "live_display_color_matrix";
 
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @hide
+	 */
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
+	
+	
         /**
          * Whether to include options in power menu for rebooting into recovery or bootloader
          * @hide
@@ -1013,6 +1026,7 @@ public final class CMSettings {
          * @hide
          */
         public static final String[] LEGACY_SECURE_SETTINGS = new String[]{
+		CMSettings.Secure.QS_FAST_DATA_ENABLE
                 CMSettings.Secure.ADVANCED_MODE,
                 CMSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
                 CMSettings.Secure.BUTTON_BRIGHTNESS,
