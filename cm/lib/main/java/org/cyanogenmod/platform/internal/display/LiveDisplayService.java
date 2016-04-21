@@ -123,8 +123,10 @@ public class LiveDisplayService extends SystemService {
 
         @Override
         public String toString() {
-            return String.format("[mLowPowerMode=%b, mScreenOn=%b, mMode=%d, mTwilight=%s",
-                    mLowPowerMode, mScreenOn, mMode, (mTwilight == null ? "NULL" : mTwilight.toString()));
+            return String.format(
+                    "[mLowPowerMode=%b, mScreenOn=%b, mMode=%d, mTwilight=%s",
+                    mLowPowerMode, mScreenOn, mMode,
+                    (mTwilight == null ? "NULL" : mTwilight.toString()));
         }
     }
 
@@ -484,7 +486,7 @@ public class LiveDisplayService extends SystemService {
         @Override
         public void onDisplayChanged(int displayId) {
             if (displayId == Display.DEFAULT_DISPLAY) {
-                boolean screenOn = mDisplayManager.getDisplay(displayId).getState() == Display.STATE_ON;
+                boolean screenOn = isScreenOn();
                 if (screenOn != mState.mScreenOn) {
                     mState.mScreenOn = screenOn;
                     updateFeatures(DISPLAY_CHANGED);
@@ -558,6 +560,11 @@ public class LiveDisplayService extends SystemService {
             nudge();
         }
     };
+
+    private boolean isScreenOn() {
+        return mDisplayManager.getDisplay(
+                Display.DEFAULT_DISPLAY).getState() == Display.STATE_ON;
+    }
 
     private int getSunsetCounter() {
         // Counter used to determine when we should tell the user about this feature.

@@ -140,20 +140,27 @@ public class OutdoorModeController extends LiveDisplayFeature {
     }
 
     private synchronized void updateSensorState() {
-        if (!mUseOutdoorMode || mLuxObserver == null) {
+        if (!mUseOutdoorMode || mLuxObserver == null || mSelfManaged) {
             return;
         }
 
-        /* Sensor:
-         *  Enabled in day mode
-         *  Enabled in auto mode if it's not night
-         *  Disabled if outdoor mode explicitly selected
-         *  Disabled in low power mode
-         *  Disabled if screen is off
+        /*
+         * Light sensor:
          */
-        boolean sensorEnabled = !mSelfManaged && !isLowPowerMode() && isScreenOn() &&
-                getMode() != MODE_OUTDOOR && isAutomaticOutdoorModeEnabled() &&
-                ((getMode() == MODE_AUTO && !isNight()) || getMode() == MODE_DAY);
+        boolean sensorEnabled = false;
+        // no sensor if low power mode or when the screen is off
+        if (isScreenOn() && !isLowPowerMode()) {
+            if (isAutomaticOutdoorModeEnabled()) {
+                int mode = getMode();
+                if (mode == MODE_DAY) {
+                    // always turn it on if day mode is selected
+                    sensorEnabled = true;
+                } else if (mode == MODE_AUTO && !isNight()) {
+                    // in auto mode we turn it on during actual daytime
+                    sensorEnabled = true;
+                }
+            }
+        }
         if (mIsSensorEnabled != sensorEnabled) {
             mIsSensorEnabled = sensorEnabled;
             mLuxObserver.setTransitionListener(sensorEnabled ? mListener : null);
@@ -171,17 +178,42 @@ public class OutdoorModeController extends LiveDisplayFeature {
             return;
         }
 
+        updateSensorState();
+
         /*
-         * Hardware toggle:
-         *   Enabled if outdoor mode explictly selected
-         *   Enabled if outdoor lux exceeded and day mode or auto mode (if not night)
-         *   Enabled if backend is self-managed
+         * Should we turn on outdoor mode or not?
+         *
+         * Do nothing if the screen is off.
          */
         if (isScreenOn()) {
-            boolean enabled = !isLowPowerMode() &&
-                    (getMode() == MODE_OUTDOOR ||
-                    (isAutomaticOutdoorModeEnabled() && (mSelfManaged || mIsOutdoor) &&
-                    ((getMode() == MODE_AUTO && !isNight()) || getMode() == MODE_DAY)));
+            boolean enabled = false;
+            // turn it off in low power mode
+            if (!isLowPowerMode()) {
+                int mode = getMode();
+                // turn it on if the user manually selected the mode
+                if (mode == MODE_OUTDOOR) {
+                    enabled = true;
+                } else if (isAutomaticOutdoorModeEnabled()) {
+                    // self-managed mode means we just flip a switch and an external
+                    // implementation does all the sensing. this allows the user
+                    // to turn on/off the feature.
+                    if (mSelfManaged) {
+                        enabled = true;
+                    } else if (mIsOutdoor) {
+                        // if we're here, the sensor detects extremely bright light.
+                        if (mode == MODE_DAY) {
+                            // if the user manually selected day mode, go ahead and
+                            // melt their face
+                            enabled = true;
+                        } else if (mode == MODE_AUTO && !isNight()) {
+                            // if we're in auto mode, we should also check if it's
+                            // night time, since we don't get much sun at night
+                            // on this planet :)
+                            enabled = true;
+                        }
+                    }
+                }
+            }
             mHardware.set(CMHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT, enabled);
         }
 
