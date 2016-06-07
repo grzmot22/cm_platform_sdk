@@ -123,6 +123,9 @@ public class CMSettingsProviderDefaultsTest extends AndroidTestCase {
         GLOBAL_SETTINGS_DEFAULTS.add(new Setting(
                 CMSettings.Global.WEATHER_TEMPERATURE_UNIT,
                 "R.integer.def_temperature_unit"));
+        GLOBAL_SETTINGS_DEFAULTS.add(new Setting(
+                CMSettings.Global.DEV_FORCE_SHOW_NAVBAR,
+                "R.integer.def_force_show_navbar"));
     }
 
     @Override
