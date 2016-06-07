@@ -1837,7 +1837,7 @@ public final class CMSettings {
          * me bro
          */
         public static final Validator __MAGICAL_TEST_PASSING_ENABLER_VALIDATOR =
-                sBooleanValidator;
+                sAlwaysTrueValidator;
 
         /**
          * @hide
@@ -3355,6 +3355,13 @@ public final class CMSettings {
          */
         public static final String DEV_FORCE_SHOW_NAVBAR = "dev_force_show_navbar";
         // endregion
+
+        /**
+         * I can haz more bukkits
+         * @hide
+         */
+        public static final String __MAGICAL_TEST_PASSING_ENABLER =
+                "___magical_test_passing_enabler";
 
         /**
          * @hide
